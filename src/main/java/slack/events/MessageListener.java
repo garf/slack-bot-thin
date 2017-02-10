@@ -4,6 +4,7 @@ import com.ullink.slack.simpleslackapi.SlackSession;
 import mother.Connect;
 import dto.socket.ClientMessage;
 import dto.socket.MotherMessage;
+import slack.Formatter;
 
 public class MessageListener
 {
@@ -39,7 +40,7 @@ public class MessageListener
 
             MotherMessage motherMessage = this.mother.send(clientMessage);
 
-            listenerSession.sendMessage(message.getChannel(), motherMessage.getText());
+            listenerSession.sendMessage(message.getChannel(), Formatter.format(motherMessage.getText()));
         });
     }
 }
